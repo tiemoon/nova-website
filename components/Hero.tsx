@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, Sparkles, Shield } from "lucide-react";
 
@@ -37,152 +38,6 @@ function TypingText() {
   return <span className="gradient-text typing-cursor">{displayed}</span>;
 }
 
-function NovaFace() {
-  return (
-    <svg viewBox="0 0 200 230" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-      <defs>
-        <radialGradient id="skinGrad" cx="50%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="#fde8d0" />
-          <stop offset="60%" stopColor="#f5c49a" />
-          <stop offset="100%" stopColor="#e8a87c" />
-        </radialGradient>
-        <radialGradient id="skinShadow" cx="50%" cy="70%" r="60%">
-          <stop offset="0%" stopColor="rgba(200,120,70,0.25)" />
-          <stop offset="100%" stopColor="rgba(200,120,70,0)" />
-        </radialGradient>
-        <linearGradient id="hairGrad" x1="30%" y1="0%" x2="70%" y2="100%">
-          <stop offset="0%" stopColor="#160830" />
-          <stop offset="40%" stopColor="#260c50" />
-          <stop offset="100%" stopColor="#0a0418" />
-        </linearGradient>
-        <radialGradient id="irisLeft" cx="40%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#ddd6fe" />
-          <stop offset="45%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#4c1d95" />
-        </radialGradient>
-        <radialGradient id="irisRight" cx="40%" cy="35%" r="65%">
-          <stop offset="0%" stopColor="#ddd6fe" />
-          <stop offset="45%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#4c1d95" />
-        </radialGradient>
-        <filter id="eyeGlowFilter" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <radialGradient id="lipGrad" cx="50%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="#f9a8c9" />
-          <stop offset="100%" stopColor="#e05c8a" />
-        </radialGradient>
-        <radialGradient id="blushGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="rgba(251,113,133,0.25)" />
-          <stop offset="100%" stopColor="rgba(251,113,133,0)" />
-        </radialGradient>
-      </defs>
-
-      {/* Hair — back layer */}
-      <path
-        d="M30 130 Q22 85 35 52 Q52 15 100 8 Q148 15 165 52 Q178 85 170 130 Q175 170 168 195 Q148 215 100 220 Q52 215 32 195 Q25 170 30 130Z"
-        fill="url(#hairGrad)"
-      />
-
-      {/* Hair side volumes */}
-      <path d="M30 130 Q20 100 28 70 Q24 90 28 115Z" fill="#0a0418" opacity="0.6" />
-      <path d="M170 130 Q180 100 172 70 Q176 90 172 115Z" fill="#0a0418" opacity="0.6" />
-
-      {/* Face oval */}
-      <ellipse cx="100" cy="120" rx="58" ry="66" fill="url(#skinGrad)" />
-
-      {/* Face shadow (depth) */}
-      <ellipse cx="100" cy="125" rx="58" ry="66" fill="url(#skinShadow)" />
-
-      {/* Forehead highlight */}
-      <ellipse cx="100" cy="88" rx="28" ry="14" fill="rgba(255,240,225,0.25)" />
-
-      {/* Neck */}
-      <path d="M85 178 Q85 198 100 202 Q115 198 115 178 Q112 172 100 171 Q88 172 85 178Z" fill="url(#skinGrad)" />
-
-      {/* Neck shadow */}
-      <path d="M88 178 Q88 195 100 199 Q112 195 112 178" stroke="rgba(180,100,60,0.15)" strokeWidth="2" fill="none" />
-
-      {/* Left eyebrow */}
-      <path d="M60 92 Q71 84 83 88" stroke="#2d1040" strokeWidth="3" strokeLinecap="round" fill="none" />
-      <path d="M60 92 Q71 84 83 88" stroke="#5b2d8a" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.3" />
-
-      {/* Right eyebrow */}
-      <path d="M117 88 Q129 84 140 92" stroke="#2d1040" strokeWidth="3" strokeLinecap="round" fill="none" />
-      <path d="M117 88 Q129 84 140 92" stroke="#5b2d8a" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.3" />
-
-      {/* Left eye — white */}
-      <ellipse cx="73" cy="107" rx="14" ry="9" fill="white" />
-      {/* Left iris */}
-      <circle cx="73" cy="107" r="7.5" fill="url(#irisLeft)" filter="url(#eyeGlowFilter)" />
-      {/* Left pupil */}
-      <circle cx="73" cy="107" r="4" fill="#110620" />
-      {/* Left eye shine */}
-      <circle cx="75.5" cy="104.5" r="2.2" fill="white" opacity="0.95" />
-      <circle cx="71.5" cy="108.5" r="1" fill="white" opacity="0.5" />
-      {/* Left eye glow halo */}
-      <ellipse cx="73" cy="107" rx="14" ry="9" fill="none" stroke="#a78bfa" strokeWidth="1.2" opacity="0.4" />
-      {/* Left lashes top */}
-      <path d="M59 107 Q61 100 66 97" stroke="#1a0830" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-      <path d="M61 104 Q63 98 67 96" stroke="#1a0830" strokeWidth="1.4" strokeLinecap="round" fill="none" opacity="0.6" />
-      <path d="M64 102 Q65 96 70 95" stroke="#1a0830" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.4" />
-
-      {/* Right eye — white */}
-      <ellipse cx="127" cy="107" rx="14" ry="9" fill="white" />
-      {/* Right iris */}
-      <circle cx="127" cy="107" r="7.5" fill="url(#irisRight)" filter="url(#eyeGlowFilter)" />
-      {/* Right pupil */}
-      <circle cx="127" cy="107" r="4" fill="#110620" />
-      {/* Right eye shine */}
-      <circle cx="129.5" cy="104.5" r="2.2" fill="white" opacity="0.95" />
-      <circle cx="125.5" cy="108.5" r="1" fill="white" opacity="0.5" />
-      {/* Right eye glow halo */}
-      <ellipse cx="127" cy="107" rx="14" ry="9" fill="none" stroke="#a78bfa" strokeWidth="1.2" opacity="0.4" />
-      {/* Right lashes top */}
-      <path d="M141 107 Q139 100 134 97" stroke="#1a0830" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-      <path d="M139 104 Q137 98 133 96" stroke="#1a0830" strokeWidth="1.4" strokeLinecap="round" fill="none" opacity="0.6" />
-      <path d="M136 102 Q135 96 130 95" stroke="#1a0830" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.4" />
-
-      {/* Nose (subtle) */}
-      <path d="M97 122 Q94 131 96 136 Q100 139 104 136 Q106 131 103 122" stroke="#d08860" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.35" />
-      <path d="M96 136 Q100 140 104 136" stroke="#d08860" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.45" />
-
-      {/* Cheek blush */}
-      <ellipse cx="62" cy="125" rx="14" ry="9" fill="url(#blushGrad)" />
-      <ellipse cx="138" cy="125" rx="14" ry="9" fill="url(#blushGrad)" />
-
-      {/* Upper lip */}
-      <path d="M82 150 Q88 145 100 147 Q112 145 118 150" stroke="#d0567a" strokeWidth="2" strokeLinecap="round" fill="none" />
-      {/* Lower lip */}
-      <path d="M82 150 Q89 160 100 159 Q111 160 118 150" fill="url(#lipGrad)" opacity="0.85" />
-      <path d="M82 150 Q89 160 100 159 Q111 160 118 150" stroke="#d0567a" strokeWidth="1" strokeLinecap="round" fill="none" />
-      {/* Lip highlight */}
-      <ellipse cx="100" cy="157" rx="8" ry="3" fill="rgba(255,200,220,0.3)" />
-
-      {/* Hair — front layer over face edges */}
-      <path d="M42 80 Q38 60 48 40 Q56 22 70 14 Q42 28 35 58 Q28 82 30 115Z" fill="url(#hairGrad)" opacity="0.85" />
-      <path d="M158 80 Q162 60 152 40 Q144 22 130 14 Q158 28 165 58 Q172 82 170 115Z" fill="url(#hairGrad)" opacity="0.85" />
-
-      {/* Hair — top center parting highlight */}
-      <path d="M88 8 Q94 6 100 8 Q106 6 112 8" stroke="#3d1a6e" strokeWidth="2" fill="none" opacity="0.4" />
-
-      {/* AI glow dot — forehead */}
-      <circle cx="100" cy="70" r="2.5" fill="#a78bfa" opacity="0.6" filter="url(#softGlow)" />
-      <circle cx="100" cy="70" r="1.2" fill="#ddd6fe" opacity="0.9" />
-    </svg>
-  );
-}
 
 function NovaAvatar() {
   return (
@@ -230,26 +85,29 @@ function NovaAvatar() {
       </div>
 
       {/* Nova face — center */}
-      <div className="relative w-48 h-48 float-animation z-10">
-        {/* Circular clip frame */}
-        <div className="absolute inset-0 rounded-full overflow-hidden"
-          style={{ boxShadow: "0 0 40px rgba(124,58,237,0.5), 0 0 80px rgba(124,58,237,0.15)" }}>
-          {/* Background gradient inside circle */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a30] via-[#0f0820] to-[#0a0418]" />
-          {/* Face SVG */}
-          <div className="absolute inset-0 flex items-end justify-center">
-            <div className="w-full" style={{ marginBottom: "-8px" }}>
-              <NovaFace />
-            </div>
-          </div>
+      <div className="relative w-56 h-56 float-animation z-10">
+        {/* Circular photo frame */}
+        <div
+          className="absolute inset-0 rounded-full overflow-hidden"
+          style={{ boxShadow: "0 0 50px rgba(124,58,237,0.55), 0 0 100px rgba(124,58,237,0.18)" }}
+        >
+          <Image
+            src="/nova.png"
+            alt="Nova — AI Representative"
+            fill
+            className="object-cover object-top"
+            priority
+          />
+          {/* Subtle violet tint overlay for brand cohesion */}
+          <div className="absolute inset-0 bg-violet-900/10 mix-blend-multiply" />
         </div>
         {/* Outer rim */}
-        <div className="absolute inset-0 rounded-full border-2 border-violet-500/50" />
+        <div className="absolute inset-0 rounded-full border-2 border-violet-500/60" />
         {/* Pulse rings */}
         {[1, 2].map((i) => (
           <div
             key={i}
-            className="absolute inset-0 rounded-full border-2 border-violet-400/30"
+            className="absolute inset-0 rounded-full border-2 border-violet-400/25"
             style={{
               animation: `pulse-ring ${1.5 + i * 0.8}s cubic-bezier(0.215, 0.61, 0.355, 1) infinite`,
               animationDelay: `${i * 0.4}s`,
